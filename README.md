@@ -2,6 +2,12 @@
 
 Attach script to selected component
 
+> Try to add after all components.
+
+<p align="center">
+  <img src="screenshot.png" alt="screenshot.png">
+</p>
+
 ### HTML
 ```html
 <link href="https://unpkg.com/grapesjs/dist/css/grapes.min.css" rel="stylesheet">
