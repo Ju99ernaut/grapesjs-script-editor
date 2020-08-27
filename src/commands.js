@@ -50,7 +50,7 @@ export default (editor, opts = {}) => {
         });
     })
 
-    // Add the blockly command
+    // Add the script command
     cm.add(cmdId, {
         run(editor, sender, opts = {}) {
             this.editor = editor;
@@ -58,7 +58,7 @@ export default (editor, opts = {}) => {
             this.target = opts.target || editor.getSelected();
             const target = this.target;
 
-            if (target && target.get('editable')) this.showCustomCode(target);
+            if (target) this.showCustomCode(target);
         },
 
         stop(editor) {
@@ -76,7 +76,7 @@ export default (editor, opts = {}) => {
             } = this;
             const title = options.title || modalTitle;
             if (!content) content = this.getContent();
-            const code = target.get('script') || starter;
+            let code = target.getScriptString() || starter;
             md.open({
                 title,
                 content
