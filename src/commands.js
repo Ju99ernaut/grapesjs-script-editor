@@ -10,12 +10,12 @@ export default (editor, opts = {}) => {
         modalTitle,
         codeViewOptions,
         commandAttachScript,
-        scriptTypesSupport,
         toolbarIcon,
         onRun,
         onError,
         starter
     } = opts;
+    let scriptTypesSupport = opts.scriptTypesSupport;
 
     let content = null;
 
@@ -26,6 +26,15 @@ export default (editor, opts = {}) => {
             target.insertAdjacentHTML('beforeend', content);
         }
     };
+
+    if (editor.$.isString(scriptTypesSupport)) {
+        scriptTypesSupport = scriptTypesSupport.split(',');
+    }
+
+    if (editor.$.isArray(scriptTypesSupport)) {
+        scriptTypesSupport = scriptTypesSupport.includes('*') ?
+            domc.getTypes().map(c => c.id) : scriptTypesSupport;
+    }
 
     // Add icons to specified component types
     scriptTypesSupport && scriptTypesSupport.forEach(type => {
@@ -70,10 +79,7 @@ export default (editor, opts = {}) => {
          * @param  {Component} target
          */
         showCustomCode(target) {
-            const {
-                editor,
-                options
-            } = this;
+            const { editor, options } = this;
             const title = options.title || modalTitle;
             if (!content) content = this.getContent();
             let code = target.getScriptString() || starter;
@@ -99,9 +105,7 @@ export default (editor, opts = {}) => {
          * @return {HTMLElement}
          */
         getContent() {
-            const {
-                editor
-            } = this;
+            const { editor } = this;
             const content = document.createElement('div');
             const pfx = editor.getConfig('stylePrefix');
             content.className = `${pfx}attach-script`;
@@ -121,9 +125,7 @@ export default (editor, opts = {}) => {
          * @return {HTMLElement|String}
          */
         getContentActions() {
-            const {
-                editor
-            } = this;
+            const { editor } = this;
             const actions = document.createElement('div');
             actions.id = "actns";
             const btn = document.createElement('button');
@@ -148,10 +150,7 @@ export default (editor, opts = {}) => {
          * Handle the main save task
          */
         handleSave() {
-            const {
-                editor,
-                target
-            } = this;
+            const { editor, target } = this;
             const code = this.getCodeViewer().getContent();
             target.set('script', code);
             editor.Modal.close();
@@ -162,9 +161,7 @@ export default (editor, opts = {}) => {
          * @return {CodeViewer}
          */
         getCodeViewer() {
-            const {
-                editor
-            } = this;
+            const { editor } = this;
 
             if (!this.codeViewer) {
                 this.codeViewer = editor.CodeManager.createViewer({

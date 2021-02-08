@@ -1,43 +1,46 @@
 import commands from './commands';
 
 export default (editor, opts = {}) => {
-  const options = {
-    ...{
-      // Starter code
-      starter: 'let el = this',
+    const options = {
+        ...{
+            // Starter code
+            starter: 'let el = this',
 
-      toolbarIcon: '<i class="fa fa-file-code-o"></i>',
+            toolbarIcon: '<i class="fa fa-file-code-o"></i>',
 
-      // Component types to allow script editing
-      // Avoid components with predefined scripts
-      scriptTypesSupport: ['default', 'wrapper', 'text', 'textnode', 'image', 'video', 'svg'],
+            // Component types to allow script editing
+            // Avoid components with predefined scripts
+            scriptTypesSupport: ['default', 'wrapper', 'text', 'textnode', 'image', 'video', 'svg'],
 
-      // Object to extend the default component's toolbar button for the code, eg. `{ label: '</>', attributes: { title: 'Open custom code' } }`
-      // Pass a falsy value to avoid adding the button
-      toolbarBtnCustomScript: {},
+            // Object to extend the default component's toolbar button for the code, eg. `{ label: '</>', attributes: { title: 'Open custom code' } }`
+            // Pass a falsy value to avoid adding the button
+            toolbarBtnCustomScript: {},
 
-      // On run success
-      onRun: () => console.log('valid syntax'),
+            // On run success
+            onRun: () => console.log('valid syntax'),
 
-      // Logic when there is an error on run
-      onError: err => console.log('error', err),
+            // Logic when there is an error on run
+            onError: err => console.log('error', err),
 
-      // Title for the custom code modal
-      modalTitle: 'Script',
+            // Title for the custom code modal
+            modalTitle: 'Script',
 
-      // Additional options for the code viewer, eg. `{ theme: 'hopscotch', readOnly: 0 }`
-      codeViewOptions: {},
+            // Textarea label
+            codeLabel: 'JS',
 
-      // Label for the default save button
-      buttonLabel: 'Save',
+            // Additional options for the code viewer, eg. `{ theme: 'hopscotch', readOnly: 0 }`
+            codeViewOptions: {},
 
-      // Object to extend the default inject logic command.
-      // Check the source to see all available methods
-      commandAttachScript: {},
-    },
-    ...opts
-  };
+            // Label for the default save button
+            buttonLabel: 'Save',
 
-  // load commands
-  commands(editor, options);
+            // Object to extend the default inject logic command.
+            // Check the source to see all available methods
+            commandAttachScript: {},
+        },
+        ...opts
+    };
+
+    // load commands
+    commands(editor, options);
 };
