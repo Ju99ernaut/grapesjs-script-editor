@@ -8,6 +8,8 @@ Attach script to selected component
   <img src="screenshot.png" alt="screenshot.png">
 </p>
 
+[DEMO](https://codepen.io/ju99ernaut/pen/NWNEWpV)
+
 ### HTML
 ```html
 <link href="https://unpkg.com/grapesjs/dist/css/grapes.min.css" rel="stylesheet">
