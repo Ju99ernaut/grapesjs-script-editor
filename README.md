@@ -130,19 +130,19 @@ $ cd grapesjs-script-editor
 Install dependencies
 
 ```sh
-$ npm i
+$ pnpm i
 ```
 
 Start the dev server
 
 ```sh
-$ npm start
+$ pnpm start
 ```
 
 Build the source
 
 ```sh
-$ npm run build
+$ pnpm run build
 ```
 
 

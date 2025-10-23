@@ -6,7 +6,6 @@
   <title>Grapesjs Script Editor</title>
   <link href="https://unpkg.com/grapesjs/dist/css/grapes.min.css" rel="stylesheet">
   <script src="https://unpkg.com/grapesjs"></script>
-  <script src="dist/grapesjs-script-editor.min.js"></script>
   <style>
     body,
     html {
@@ -27,19 +26,20 @@
 
 
   <script type="text/javascript">
-    window.editor = grapesjs.init({
-      height: '100%',
-      container: '#gjs',
-      showOffsets: true,
-      fromElement: true,
-      noticeOnUnload: false,
-      storageManager: false,
-      plugins: ['grapesjs-script-editor'],
-      pluginsOpts: {
-        'grapesjs-script-editor': {
-          /* Test here your options  */ }
-      }
-    });
+    window.onload = () => {
+      window.editor = grapesjs.init({
+        height: '100%',
+        container: '#gjs',
+        showOffsets: true,
+        fromElement: true,
+        noticeOnUnload: false,
+        storageManager: false,
+        plugins: ['grapesjs-script-editor'],
+        pluginsOpts: {
+          'grapesjs-script-editor': { /* Test here your options  */ }
+        }
+      });
+    }
   </script>
 </body>
 
